@@ -1,0 +1,6 @@
+#!/bin/sh
+## DBADMIN
+sudo mkdir -p /var/www/src/adminer-4.1.0 
+sudo chown www-data -R /var/www/src/adminer-4.1.0
+sudo ln -s /var/www/src/adminer-4.1.0 /var/www/kncs/dbadmin
+sudo wget -O/var/www/src/adminer-4.1.0/index.php http://downloads.sourceforge.net/project/adminer/Adminer/Adminer%204.1.0/adminer-4.1.0.php?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fadminer%2F&ts=1420999082&use_mirror=hivelocity 

@@ -1,0 +1,17 @@
+#!/bin/sh
+## SFTP
+# package acl required to set default permissions, drive must be remounted with ,acl flag in /etc/fstab
+# groupname = sftp
+# path = /var/sftp
+# user = kedwards
+# user_dir = $path/$user
+#sudo apt-get install acl \
+sudo groupadd sftp && sudo useradd -gsftp -d/ -s/sbin/nologin kedwards \
+&& sudo sed -i.knc_bak 's|PasswordAuthentication no|PasswordAuthentication yes|;s|Subsystem sftp /usr/lib/openssh/sftp-server|Subsystem sftp internal-sftp|' /etc/ssh/sshd_config \
+&& echo -e "\nMatch Group sftp\nChrootDirectory /var/sftp\nAllowTCPForwarding no\nX11Forwarding no\nForceCommand internal-sftp" | sudo tee -a /etc/ssh/sshd_config > /dev/null \
+&& sudo mkdir -p /var/sftp/kedwards \
+&& sudo chgrp -R sftp /var/sftp/kedwards \
+&& sudo chmod -R g+s /var/sftp/kedwards \
+# sudo setfacl -R -d -m g::rwx -m o::rx /var/sftp/kedwards \
+&& sudo service ssh restart \
+&& sudo passwd kedwards

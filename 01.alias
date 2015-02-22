@@ -1,0 +1,3 @@
+#!/bin/sh
+# UPDATE alias, file/folder list preference
+echo "alias lf='ls -lAF'" | tee -a ~/.bashrc > /dev/null && source ~/.bashrc

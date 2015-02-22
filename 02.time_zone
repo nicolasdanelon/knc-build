@@ -1,0 +1,4 @@
+#!/bin/bash
+# UPDATE Server Timezone to MST (Debian defaults to UTC)
+# timezone = 'America/Edmonton'
+echo "America/Edmonton" | sudo tee /etc/timezone > /dev/null && sudo dpkg-reconfigure -fnoninteractive tzdata

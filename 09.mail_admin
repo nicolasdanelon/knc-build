@@ -1,0 +1,6 @@
+#!/bin/sh
+## MAILADMIN
+cd /var/www/src/ \
+&& wget -qO- "http://downloads.sourceforge.net/project/postfixadmin/postfixadmin/postfixadmin-2.92/postfixadmin-2.92.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fpostfixadmin%2Ffiles%2Fpostfixadmin%2Fpostfixadmin-2.92%2F&ts=1420213982&use_mirror=hivelocity" | tar -xz \
+&& sudo chown www-data -R /var/www/src/postfixadmin-2.92 \
+&& sudo ln -s /var/www/src/postfixadmin-2.92 /var/www/kncs/mailadmin
